@@ -8,7 +8,7 @@ export default async function RootLayout({
 }>) {
     return (
         <div className="w-screen h-screen flex custom-scrollbar scroll-smooth">
-            <div className="m-[0.75rem] bg-secondary/40 mr-0 rounded-md border hidden md:flex">
+            <div className="m-[0.75rem] bg-card mr-0 rounded-md border hidden md:flex">
                 <Sidebar />
             </div>
             <div className="m-[0.75rem] rounded-md border w-full bg-secondary/40">

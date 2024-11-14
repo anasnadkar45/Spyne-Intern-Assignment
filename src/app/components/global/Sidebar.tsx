@@ -7,6 +7,7 @@ import {
     Car,
     HomeIcon,
     SettingsIcon,
+    LogOut,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,6 +17,8 @@ import Logo from '../../../../public/Logo.svg';
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { ModeToggle } from "../theme/ModeToggle";
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
 // Define the sidebar links with categories
 export const sidebarLinks = [
@@ -29,12 +32,13 @@ export const sidebarLinks = [
         category: "Cars",
         links: [
             { id: 0, name: "All Cars", href: "/cars", icon: Car },
+            { id: 1, name: "My Cars", href: "/my-cars", icon: Car },
         ],
     },
     {
         category: "Settings",
         links: [
-            { id: 0, name: "Profile Settings", href: "/settings/profile", icon: SettingsIcon },
+            { id: 0, name: "Profile Settings", href: "/profile", icon: SettingsIcon },
         ],
     },
 ];
@@ -46,7 +50,7 @@ export const Sidebar = () => {
     return (
         <ScrollArea className="w-fit relative h-full z-0">
             <TooltipProvider>
-                <div className={cn("hidden max-w-[300px] shrink-0 px-2 md:block", { "w-fit": !isExpand })}>
+                <div className={cn("hidden w-[200px] shrink-0 px-2 md:block", { "w-fit": !isExpand })}>
                     {/* Toggle button to collapse/expand the sidebar */}
                     <Button
                         size={"icon"}
@@ -58,7 +62,7 @@ export const Sidebar = () => {
 
                     <div className="flex h-full max-h-screen flex-col gap-2 pt-2">
                         {/* Logo section */}
-                        <div className="flex h-14 justify-center items-center border-b py-2 lg:h-[60px]">
+                        <div className="flex h-14 justify-center gap-2 items-center border-b py-2 lg:h-[60px]">
                             <Link href="/home" className="flex items-center gap-2 font-semibold">
                                 <Image src={Logo} alt="Logo" className="size-8" />
                                 {isExpand ? (
@@ -67,11 +71,13 @@ export const Sidebar = () => {
                                     </p>
                                 ) : null}
                             </Link>
+                            <div className={`${!isExpand ? 'hidden': 'flex'}`}>
+                                <ModeToggle />
+                            </div>
                         </div>
 
                         {/* Navigation section */}
                         <div className="flex-1 mt-6">
-                            {/* <ModeToggle /> */}
                             <nav className="grid items-start text-sm font-medium px-2">
                                 {sidebarLinks.map((category, index) => (
                                     <div key={index} className="mb-6">
@@ -86,7 +92,7 @@ export const Sidebar = () => {
                                                             href={link.href}
                                                             className={cn(
                                                                 "flex items-center text-muted-foreground gap-3 p-2 rounded-md hover:bg-muted",
-                                                                pathname === link.href ? "bg-muted" : ""
+                                                                pathname.includes(link.href) ? "bg-muted" : ""
                                                             )}
                                                         >
                                                             <link.icon className="size-4" />
@@ -104,6 +110,16 @@ export const Sidebar = () => {
                                     </div>
                                 ))}
                             </nav>
+                        </div>
+
+                        {/* Logout button */}
+                        <div className="absolute right-2 left-2 bottom-2 z-30">
+                            <LogoutLink>
+                                <Button className="w-full flex items-center justify-center gap-2">
+                                    <LogOut className="w-4 h-4" />
+                                    {isExpand && <span>Logout</span>}
+                                </Button>
+                            </LogoutLink>
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,7 @@
 
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Button } from '@/components/ui/button'
 import {
     Carousel,
@@ -11,7 +12,10 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel"
 import Image from 'next/image'
-import { redirect } from 'next/navigation'
+import { Car, Building2, User, MoreVertical, Edit, Trash2 } from 'lucide-react'
+import { redirect, useRouter } from 'next/navigation'
+import { UpdateCar } from './UpdateCar'
+import { DeleteCar } from './DeleteCar'
 
 interface CarData {
     id: string
@@ -24,7 +28,7 @@ interface CarData {
     tags: string[]
 }
 
-export function CarsCard({ car }: { car: CarData }) {
+export function MyCarsCard({ car }: { car: CarData }) {
 
     return (
         <Card className="w-full mx-auto overflow-hidden flex flex-col justify-between">
@@ -32,6 +36,10 @@ export function CarsCard({ car }: { car: CarData }) {
                 <CardHeader className="p-3 border-b">
                     <div className="flex items-center justify-between">
                         <CardTitle className="text-lg text-primary font-semibold truncate">{car.name}</CardTitle>
+                        <div className='flex items-center gap-1'>
+                            <UpdateCar car={car} />
+                            <DeleteCar car={car} />
+                        </div>
                     </div>
                 </CardHeader>
                 <CardContent className="p-0">
@@ -68,7 +76,7 @@ export function CarsCard({ car }: { car: CarData }) {
                 </CardContent>
             </div>
             <CardFooter className='p-3'>
-                <Button className="w-full" onClick={() => redirect(`/cars/${car.id}`)}>
+                <Button className="w-full" onClick={() => redirect(`/my-cars/${car.id}`)}>
                     View Details
                 </Button>
             </CardFooter>

@@ -1,3 +1,4 @@
+import { DeleteCar } from '@/app/components/cars/DeleteCar'
 import prisma from '@/app/lib/db'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import React from 'react'
@@ -8,10 +9,12 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Car, Building2, User } from 'lucide-react'
+import { UpdateCar } from '@/app/components/cars/UpdateCar'
 
-const getCarData = async (id: string) => {
+const getCarData = async (userId: string, id: string) => {
   const data = await prisma.car.findUnique({
     where: {
+      userId: userId,
       id: id
     },
     select: {
@@ -33,8 +36,11 @@ export default async function CarDetailsPage({
 }: {
   params: Promise<{ id: string }>
 }) {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+  const userId = user?.id as string;
   const id = (await params).id
-  const car = await getCarData(id)
+  const car = await getCarData(userId, id)
 
   if (!car) {
     notFound()
@@ -44,6 +50,10 @@ export default async function CarDetailsPage({
     <div className="mx-auto p-4 space-y-8">
       <div className="flex justify-between items-center">
         <h1 className="text-4xl font-bold">{car.name}</h1>
+        <div className='flex items-center gap-1'>
+          <UpdateCar car={car} />
+          <DeleteCar car={car} />
+        </div>
       </div>
 
       <Carousel className="w-full max-w-3xl mx-auto">
