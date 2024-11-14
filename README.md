@@ -45,10 +45,14 @@ npm run dev
 This will usually start the development server and open the application in your default web browser.
 
 # Features
-- User Authentication: Secure login and registration for users.
-- Bug Reporting: Create, update, assign, and track bugs.
-- Category-based Filter: View bugs by category, priority, and status.
-- Responsive Design: Works across devices with various screen sizes.
+- User can login/signup
+- Users can add a car with upto 10 images, title, description and tags
+- Users can view a list of all their cars.
+- Users can global search through all their cars ii.e the keyword searched will list all cars whose
+title, description, tags match the keyword.
+- Users can click on a car to view particular car’s detail
+- Users can update a car’s title, description, tags, or image.
+- Users can delete a car.
 
 
 # Technologies Used
@@ -58,6 +62,7 @@ This will usually start the development server and open the application in your 
 - Tailwind CSS
 - Prisma ORM
 - PostgreSQL
+- UploadThing
 - Zod
 - React Icons
 
