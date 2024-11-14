@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Spyne SDE Intern Assignment
 
-## Getting Started
+# Project Overview
 
-First, run the development server:
+Spyne Car Management is a web application that provides an interface for managing a catalog of cars. Users can view car details, add, update, and delete cars. The project is built with Next.js and React using TypeScript for a robust and scalable codebase and for database Postgresql and Prisma ORM is used and to handle the schema validation zod is used. The user interface is styled with Tailwind CSS, and various UI components and functionalities, including carousels and tooltips, make the platform intuitive and responsive.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Getting Started
+Before running the project, make sure you have **Node.js** and **npm** installed on your machine.
+
+# Installation
+
+1.Clone the repository:
+
+Clone: Open your terminal or command prompt and run
+
+  ```bash
+   git clone https://github.com/anasnadkar45/Spyne-Intern-Assignment.git
+   cd Spyne-Intern-Assignment
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Download: Alternatively, you can download the repository as a ZIP file from GitHub and extract it to your local machine.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2.Open the Project in a Code Editor:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+ Navigate to the directory where you extracted or cloned the repository.
+ Open the project folder in your preferred code editor .
 
-## Learn More
+3.Install Dependencies
 
-To learn more about Next.js, take a look at the following resources:
+ Open a terminal or command prompt within your project directory.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+ Run the following command to install the required dependencies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+ ```bash
+  npm install
+```
 
-## Deploy on Vercel
+4.Run the Project
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+ After the dependencies are installed, start the project by running
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+ ```bash
+npm run dev
+```
+This will usually start the development server and open the application in your default web browser.
+
+# Features
+- User Authentication: Secure login and registration for users.
+- Bug Reporting: Create, update, assign, and track bugs.
+- Category-based Filter: View bugs by category, priority, and status.
+- Responsive Design: Works across devices with various screen sizes.
+
+
+# Technologies Used
+- Next.js
+- React.js
+- TypeScript
+- Tailwind CSS
+- Prisma ORM
+- PostgreSQL
+- Zod
+- React Icons
+
