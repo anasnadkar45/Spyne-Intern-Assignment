@@ -1,5 +1,4 @@
 import prisma from '@/app/lib/db'
-import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 import React from 'react'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
