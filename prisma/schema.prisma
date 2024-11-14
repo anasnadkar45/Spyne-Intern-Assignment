@@ -15,9 +15,23 @@ datasource db {
 }
 
 model User {
-  id           String     @id @unique
+  id           String @id @unique
   email        String
   firstName    String
   lastName     String
   profileImage String
+  cars         Car[]
+}
+
+model Car {
+  id          String   @id @unique @default(cuid())
+  name        String
+  description String
+  carType     String
+  company     String
+  dealer      String
+  images      String[]
+  tags        String[] @default([]) // Array of additional tags
+  User        User?    @relation(fields: [userId], references: [id])
+  userId      String?
 }
